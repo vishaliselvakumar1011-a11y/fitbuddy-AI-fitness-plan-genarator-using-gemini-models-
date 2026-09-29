@@ -1,0 +1,6 @@
+{
+  "name": "FitBuddy - AI Workout Generator",
+  "description": "Personalized 7-day AI workout plan generator, nutrition tips with Gemini Flash, adaptive feedback updates, and admin user directory.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

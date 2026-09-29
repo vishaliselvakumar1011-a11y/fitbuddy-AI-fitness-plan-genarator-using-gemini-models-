@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitBuddy - AI Workout Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), url('/static/images/gym-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            color: #1e293b;
+        }
+        .container {
+            width: 100%;
+            max-width: 520px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            padding: 36px 32px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .header p {
+            font-size: 14px;
+            color: #64748b;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 6px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #0f172a;
+            background-color: #f8fafc;
+            transition: all 0.2s ease;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #2563eb;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: #2563eb;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.1s ease;
+            margin-top: 10px;
+        }
+        .btn-submit:hover {
+            background: #1d4ed8;
+        }
+        .btn-submit:active {
+            transform: scale(0.99);
+        }
+        .footer-links {
+            margin-top: 24px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 16px;
+        }
+        .footer-links a {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.15s ease;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+            color: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💪 FitBuddy - AI Workout Generator</h1>
+            <p>Generate a personalized 7-day workout & nutrition plan</p>
+        </div>
+        <form action="/generate-workout" method="POST">
+            <div class="form-group">
+                <label for="username">Name:</label>
+                <input type="text" id="username" name="username" placeholder="e.g. Alex Hunter" required>
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="user_id">User ID:</label>
+                    <input type="number" id="user_id" name="user_id" placeholder="101" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" placeholder="28" required min="14" max="100">
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="weight">Weight (kg):</label>
+                    <input type="number" step="0.1" id="weight" name="weight" placeholder="72.5" required>
+                </div>
+                <div class="form-group">
+                    <label for="intensity">Workout Intensity:</label>
+                    <select id="intensity" name="intensity" required>
+                        <option value="Low">Low</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="goal">Fitness Goal:</label>
+                <input type="text" id="goal" name="goal" placeholder="e.g., weight loss, flexibility" required>
+            </div>
+            <button type="submit" class="btn-submit">Generate Plan</button>
+        </form>
+        <div class="footer-links">
+            <a href="/view-all-users">📋 View All Registered Users & Plans</a>
+        </div>
+    </div>
+</body>
+</html>
